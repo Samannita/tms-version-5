@@ -1,0 +1,16 @@
+com\cg\tms\dao\CrudService.class
+com\cg\tms\entity\Course.class
+com\cg\tms\exception\CustomExceptionHandler.class
+com\cg\tms\exception\ErrorMessages.class
+com\cg\tms\util\CoordinatorHelper.class
+com\cg\tms\exception\ProgramException.class
+com\cg\tms\util\UserInputValidator.class
+com\cg\tms\main\TmsSprint5Application.class
+com\cg\tms\util\ConnectionDB.class
+com\cg\tms\util\DBQueries.class
+com\cg\tms\util\EntityManagerUtils.class
+com\cg\tms\exception\ErrorResponse.class
+com\cg\tms\service\CourseService.class
+com\cg\tms\service\CourseServiceImpl.class
+com\cg\tms\controller\CoordinatorController.class
+com\cg\tms\dao\CourseDaoImpl.class

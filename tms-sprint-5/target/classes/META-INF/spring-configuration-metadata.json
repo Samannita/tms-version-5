@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "oracle",
+      "type": "com.cg.tms.entity.Course",
+      "sourceType": "com.cg.tms.entity.Course"
+    }
+  ],
+  "properties": [
+    {
+      "name": "oracle.course-charges",
+      "type": "java.lang.Integer",
+      "sourceType": "com.cg.tms.entity.Course"
+    },
+    {
+      "name": "oracle.course-desc",
+      "type": "java.lang.String",
+      "sourceType": "com.cg.tms.entity.Course"
+    },
+    {
+      "name": "oracle.course-id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.cg.tms.entity.Course"
+    },
+    {
+      "name": "oracle.course-name",
+      "type": "java.lang.String",
+      "sourceType": "com.cg.tms.entity.Course"
+    }
+  ],
+  "hints": []
+}
