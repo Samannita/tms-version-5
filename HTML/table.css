@@ -1,0 +1,22 @@
+body{
+	background-image:url('human.png');
+	background-position: right;
+	background-repeat: no-repeat;
+	background-color:moccasin;
+}
+table,td{
+border: 1px solid black;
+}
+
+th{
+	background-color:red;
+	color:white;
+}
+table{
+	border-collapse:collapse;
+	width:50%;
+	border: 1px dashed grey;
+}
+
+
+	

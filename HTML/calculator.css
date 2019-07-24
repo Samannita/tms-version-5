@@ -1,0 +1,22 @@
+body{
+    background-color: lightblue;
+    border-style: solid;
+   
+    border-color: black;
+   
+   height:10%;
+   width:25%;
+   padding-top: 2%;
+   padding-bottom: 2%;
+   padding-right: 2%;
+   padding-left: 2%;
+    
+   
+}
+input[type=number]{
+    background-color: lavenderblush;
+    font-size: 16px;
+}
+
+
+
