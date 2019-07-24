@@ -1,6 +1,8 @@
 package com.cg.tms.dao;
+
 import java.util.*;
 
+import com.cg.tms.entity.Course;
 import com.cg.tms.exception.ProgramException;
 
 /**
@@ -16,24 +18,26 @@ public interface CrudService<T> {
 	/**
 	 * 
 	 */
-	public boolean update(T o) throws ProgramException ;
+	public boolean update(T o) throws ProgramException;
 
 	/**
-	 * @throws ProgramException 
+	 * @throws ProgramException
 	 * 
 	 */
 	public T retrieve(int o) throws ProgramException;
 
 	/**
-	 * @throws ProgramException 
+	 * @throws ProgramException
 	 * 
 	 */
 	public boolean delete(T o) throws ProgramException;
 
 	/**
-	 * @throws ProgramException 
+	 * @throws ProgramException
 	 * 
 	 */
 	public Set<T> retrieveAll() throws ProgramException;
+
+	public List<Course> expensiveCourse(Course course) throws ProgramException;
 
 }

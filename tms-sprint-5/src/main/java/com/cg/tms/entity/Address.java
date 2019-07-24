@@ -18,15 +18,15 @@ public class Address implements Serializable {
 	@Id
 //	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ADDRESS")
 //	@SequenceGenerator(sequenceName = "seq_address", allocationSize = 1, name = "SEQ_ADDRESS")
-	@Column(name = "addressid")
+	@Column(name = "id")
 	private int addressid;
 	@Column(name = "line1")
 	private String line1;
-
+	@Column(name = "line2")
 	private String line2;
-
+	@Column(name = "state")
 	private String state;
-
+	@Column(name = "pincode")
 	private int pincode;
 
 	public Address() {

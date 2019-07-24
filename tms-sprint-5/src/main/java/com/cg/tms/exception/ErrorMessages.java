@@ -16,5 +16,7 @@ public class ErrorMessages {
 	public static final String MESSAGE12 = "Error";
 	public static final String MESSAGE13 = "Invalid program Details";
 	public static final String MESSAGE14 = "Program Data Incomplete-Rules Violated:";
+	public static final String MESSAGE15 = "The course name is in invalid format";
+	
 
 }

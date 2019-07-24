@@ -1,5 +1,6 @@
 package com.cg.tms.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -15,89 +16,91 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.tms.TmsBootApplication;
 import com.cg.tms.entity.Course;
 import com.cg.tms.exception.ErrorMessages;
 import com.cg.tms.exception.ProgramException;
-import com.cg.tms.main.TmsBootApplication;
 import com.cg.tms.service.CourseService;
-
 
 @RestController
 public class CoordinatorController {
 
-	
 	@Autowired
 	private CourseService courseService;
-
-
 
 	public void setCourseOperation(CourseService courseOperation) {
 		this.courseService = courseOperation;
 	}
+
 	Logger log = LoggerFactory.getLogger(TmsBootApplication.class);
 
-	//this will add courses
-	@PostMapping(value = "/addCourse", consumes = "application/json ", produces = "application/json")
+	@RequestMapping(value = "/expensiveCourse", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
+
+	public List<Course> getExpensiveCourseDetails(@RequestBody Course course) throws ProgramException {
+
+		List<Course> programs = courseService.expensiveCourse(course);
+		log.info("Get All offered Course: SUCEESS");
+		return programs;
+	}
+
+	// this will add courses
+	@PostMapping(value = "/addCourse", consumes = "application/json ")
 	public Course course(@RequestBody Course course) throws ProgramException {
 
-		System.out.println("course added successfully");
 		course.setCourseName(course.getCourseName());
 		course.setCourseDesc(course.getCourseDesc());
 		course.setCourseCharges(course.getCourseCharges());
 		courseService.addCourse(course);
-		System.out.println("course added successfully");
+		log.info("course added successfully");
 		return course;
-		
+
 	}
 
-	//this will delete the course from database by giving id
+	// this will delete the course from database by giving id
 	@DeleteMapping(value = "/deleteCourse", consumes = "application/json ", headers = "accept=application/json")
 	public String courses(@RequestBody Course course) throws ProgramException {
-		
+
 		boolean response = false;
 		response = courseService.deleteCourse(course);
 		if (response == true)
 			return "Success";
 		else
-			return "Deletion UnSuccessful";
+			log.info("Course cant be deleted");
+		return "Deletion UnSuccessful";
 	}
 
-	//this method will retrieve all the data present in the database 
-	@GetMapping(value = "/",  produces = "application/json")
-//	public @ResponseBody Set<Course> getAllCourseDetails() throws ProgramException {
-//		
-//		Set<Course> course = courseOperation.getAllCourse();
-//		System.out.println("Get All Course ACCESSED");
-//
-//		return course;
+	// this method will retrieve all the data present in the database
+	@GetMapping(value = "/getAllCourse", produces = "application/json")
+
 	public Set<Course> getAllCourseDetails() throws ProgramException {
-		log.info("Get All Course: STARTED at");
+
 		Set<Course> programs = courseService.getAllCourse();
 		log.info("Get All Course: SUCEESS");
 		return programs;
 	}
 
-	
-
-	//this will get the course details by giving id
+	// this will get the course details by giving id
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET, produces = "application/json")
-	public Course getCourseById(@PathVariable("id") Integer courseId) throws ProgramException {
-		System.out.println(courseId);
+	public Course getCourseById(@PathVariable("id") int courseId) throws ProgramException {
+		log.info("Getting details of course through course id");
 		Course course = courseService.getCourseDetails(courseId);
-		if(course==null) {
+		if (course == null) {
 			throw new ProgramException(ErrorMessages.MESSAGE7);
 		}
 		return course;
 	}
-	
-	@PutMapping(value = "/updateCourse", consumes="application/json", produces = "application/json")
-	public String updateCourse(@RequestBody Course course) throws ProgramException {
-		boolean result=false;
+
+	@PutMapping(value = "/updateCourse/{id}", consumes = "application/json", produces = "application/json")
+	public String updateCourse(@PathVariable("id") int courseId) throws ProgramException {
+		Course course = new Course();
+		boolean result = false;
+		course.setCourseCharges(course.getCourseCharges());
 		result = courseService.modifyCourse(course);
-		if(result==true)
+		if (result == true)
 			return "Updated";
 		else
-		return "Cant update";
+
+			return "Cant update";
 	}
 
 }

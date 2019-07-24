@@ -24,11 +24,12 @@ public class ProgramExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(ProgramException.class)
 	public ResponseEntity<ErrorResponse> handleProgramExceptions(ProgramException pe, WebRequest request) {
-		ErrorResponse errorResponse = new ErrorResponse(pe.getMessage(),HttpStatus.BAD_REQUEST.value(),request.getDescription(false));
+		ErrorResponse errorResponse = new ErrorResponse(pe.getMessage(), HttpStatus.BAD_REQUEST.value(),
+				request.getDescription(false));
 //		errorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
 //        errorResponse.setMessage(pe.getMessage());
 //       errorResponse.setMessageDetails(request.getDescription(false));
-        return new ResponseEntity<ErrorResponse>(errorResponse,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.BAD_REQUEST);
 
 	}
 }

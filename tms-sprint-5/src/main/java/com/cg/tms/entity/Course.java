@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
+import com.cg.tms.exception.ErrorMessages;
 
 @Entity
 @Table(name = "course")
@@ -28,15 +31,15 @@ public class Course implements Serializable {
 	@Column(name = "courseid")
 	private int courseId;
 	@Column(name = "coursename")
+	@Pattern(regexp = "[A-Za-z\\\\s]{4,}", message = ErrorMessages.MESSAGE15)
 	private String courseName;
 	@Column(name = "coursedesc")
 	private String courseDesc;
 	@Column(name = "course_charges")
 	private int courseCharges;
 
-	public Course(int courseId, String courseName, String courseDesc, int courseCharges) {
+	public Course(String courseName, String courseDesc, int courseCharges) {
 
-		this.courseId = courseId;
 		this.courseName = courseName;
 		this.courseDesc = courseDesc;
 		this.courseCharges = courseCharges;
